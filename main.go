@@ -33,7 +33,8 @@ func RunScript() js.Func {
 
 			// print() statements send their values to the buffer to be passed to the console
 			var b bytes.Buffer
-			err := hs.NewRuntime(script, &b)
+			rt := hs.NewWASMRuntime()
+			err := hs.NewRuntime(script, &b, rt)
 			if err != nil {
 				rej.Invoke(fmt.Sprintf("Error running script: %s", err.Error()))
 				return nil
