@@ -1,10 +1,10 @@
 .PHONY: build
 build:
-	GOOS=js GOARCH=wasm go build -o hookscript.wasm
+	GOOS=js GOARCH=wasm go build -ldflags="-s -w" -o hookscript.wasm
 
 .PHONY: build-wasi
 build-wasi:
-	GOOS=wasip1 GOARCH=wasm go build -o hookscript.wasm
+	GOOS=wasip1 GOARCH=wasm go build -ldflags="-s -w" -o hookscript.wasm
 
 .PHONY: prod-build
 prod-build:
